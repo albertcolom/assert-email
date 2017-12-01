@@ -1,0 +1,25 @@
+{
+    "name": "albertcolom/assert-email",
+    "authors": [
+        {
+            "name": "Albert Colom",
+            "email": "skolom@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^5.4 || ^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "albertcolom\\Assert\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\albertcolom\\Assert\\": "tests/"
+        }
+    }
+}

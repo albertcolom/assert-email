@@ -1,0 +1,8 @@
+.idea
+*.iml
+out
+.DS_Store
+.AppleDouble
+.LSOverride
+vendor/
+composer.lock
