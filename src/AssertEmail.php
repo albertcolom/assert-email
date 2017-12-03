@@ -4,14 +4,9 @@ namespace albertcolom\Assert;
 
 class AssertEmail
 {
-    static public function rfc2822($email, $message = '')
+    static public function valid($email, $message = '')
     {
-        $user   = '[a-zA-Z0-9_\-\.\+\^!#\$%&*+\/\=\?\`\|\{\}~\']+';
-        $domain = '(?:(?:[a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.?)+';
-        $ipv4   = '[0-9]{1,3}(\.[0-9]{1,3}){3}';
-        $ipv6   = '[0-9a-fA-F]{1,4}(\:[0-9a-fA-F]{1,4}){7}';
-
-        if (!preg_match("/^$user@($domain|(\[($ipv4|$ipv6)\]))$/", $email)) {
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             throw new \InvalidArgumentException(
                 sprintf($message ?: 'Invalid email "%s"', $email)
             );
@@ -66,7 +61,7 @@ class AssertEmail
 
     static private function getDomainFromEmail($email)
     {
-        self::rfc2822($email);
+        self::valid($email);
         return substr(strrchr($email, "@"), 1);
     }
 

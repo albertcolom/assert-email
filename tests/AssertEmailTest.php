@@ -13,7 +13,7 @@ class AssertEmailTest extends PHPUnit_Framework_TestCase
      */
     public  function itShouldReturnTrueWhenCorrectValidateEmail($email)
     {
-        $result = AssertEmail::rfc2822($email);
+        $result = AssertEmail::valid($email);
         $this->assertTrue($result);
     }
 
@@ -35,7 +35,7 @@ class AssertEmailTest extends PHPUnit_Framework_TestCase
      */
     public  function itShouldThrowInvalidArgumentExceptionWhenInCorrectValidateEmail($email)
     {
-        var_dump(AssertEmail::rfc2822($email));
+        var_dump(AssertEmail::valid($email));
     }
 
     public function inValidEmailDataProvider()
