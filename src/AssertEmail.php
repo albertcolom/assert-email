@@ -61,8 +61,13 @@ class AssertEmail
 
     static private function getDomainFromEmail($email)
     {
-        self::valid($email);
-        return substr(strrchr($email, "@"), 1);
+        $domain =  substr(strrchr($email, "@"), 1);
+
+        if (!preg_match('/^(?!\-)(?:[a-zA-Z\d\-]{0,62}[a-zA-Z\d]\.){1,126}(?!\d+)[a-zA-Z\d]{1,63}$/', $domain )) {
+            throw new \InvalidArgumentException(sprintf('Incorrect domain name "%s"', $domain));
+        }
+
+        return $domain;
     }
 
     private function __construct()

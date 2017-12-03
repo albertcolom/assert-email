@@ -10,6 +10,7 @@ class AssertEmailTest extends PHPUnit_Framework_TestCase
     /**
      * @test
      * @dataProvider validEmailDataProvider
+     * @param $email
      */
     public  function itShouldReturnTrueWhenCorrectValidateEmail($email)
     {
@@ -32,13 +33,14 @@ class AssertEmailTest extends PHPUnit_Framework_TestCase
      * @dataProvider inValidEmailDataProvider
      * @expectedException \InvalidArgumentException
      * @expectedExceptionMessageRegExp /Invalid email "([^"]*)"/
+     * @param $email
      */
-    public  function itShouldThrowInvalidArgumentExceptionWhenInCorrectValidateEmail($email)
+    public  function itShouldThrowInvalidArgumentExceptionWhenGetIncorrectValidateEmail($email)
     {
-        var_dump(AssertEmail::valid($email));
+        AssertEmail::valid($email);
     }
 
-    public function inValidEmailDataProvider()
+    public function invalidEmailDataProvider()
     {
         return [
             ['test @gmail.com'],
@@ -46,6 +48,29 @@ class AssertEmailTest extends PHPUnit_Framework_TestCase
             [' test@test.com '],
             ['gmail@gmail. com'],
             ['gmail@.com']
+        ];
+    }
+
+    /**
+     * @test
+     * @dataProvider invalidDomainDataProvider
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessageRegExp /Incorrect domain name "([^"]*)"/
+     * @param $email
+     */
+    public  function itShouldThrowInvalidArgumentExceptionWhenGetInvalidDomain($email)
+    {
+        AssertEmail::dns($email);
+    }
+
+    public function invalidDomainDataProvider()
+    {
+        return [
+            ['a@-domain.com'],
+            ['a@domain--.com'],
+            ['a@-domain-.-.com'],
+            ['a@domain.000'],
+            ['a@do?main.com']
         ];
     }
 
