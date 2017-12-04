@@ -1,6 +1,7 @@
 Assert email
 ==============
 [![Build Status](https://travis-ci.org/albertcolom/assert-email.svg?branch=master)](https://travis-ci.org/albertcolom/assert-email)
+[![License MIT](http://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/albertcolom/assert-email/blob/master/LICENSE)
 
 PHP >= 5.4
 
