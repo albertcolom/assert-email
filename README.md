@@ -1,6 +1,7 @@
 Assert email
 ==============
 [![Build Status](https://travis-ci.org/albertcolom/assert-email.svg?branch=master)](https://travis-ci.org/albertcolom/assert-email)
+[![Packagist](http://img.shields.io/packagist/v/albertcolom/assert-email.svg)](https://packagist.org/packages/albertcolom/assert-email)
 [![License MIT](http://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/albertcolom/assert-email/blob/master/LICENSE)
 
 PHP >= 5.4
@@ -57,8 +58,8 @@ Check temporary emails, it provides a built-in database of [2000+](https://githu
 temporalMail($email, $message = '')`
 
 AssertEmail::temporalMail('foo@domain.com'); // true
-AssertEmail::temporalMail('foo@yopmail.com'); // InvalidArgumentException: Temporal email is not allowed "test@yopmail.com"
-AssertEmail::temporalMail('foo@yopmail.com', 'Custom message %s'); // InvalidArgumentException: Custom message "foo@domain"
+AssertEmail::temporalMail('foo@yopmail.com'); // InvalidArgumentException: Temporal email is not allowed "foo@yopmail.com"
+AssertEmail::temporalMail('foo@yopmail.com', 'Custom message %s'); // InvalidArgumentException: Custom message "foo@yopmail.com"
 ```
 
 #### DNS
