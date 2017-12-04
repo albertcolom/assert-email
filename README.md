@@ -42,18 +42,19 @@ $user->setEmail('foo@domain'); // InvalidArgumentException: Invalid email "foo@d
 
 #### Valid
 Check email valid RFC 2822
-``valid($email, $message = '')``
-
 ```php
+valid($email, $message = '')
+
 AssertEmail::valid('foo@domain.com'); // true
 AssertEmail::valid('foo@domain'); // InvalidArgumentException: Invalid email "foo@domain"
 AssertEmail::valid('foo@domain', 'Custom message %s'); // InvalidArgumentException: Custom message "foo@domain"
 ```
+
 #### Temporal mail
 Check temporary emails, it provides a built-in database of [2000+](https://github.com/albertcolom/assert-email/blob/master/resources/temporal-mail-domain.txt) domains
-``temporalMail($email, $message = '')``
-
 ```php
+temporalMail($email, $message = '')`
+
 AssertEmail::temporalMail('foo@domain.com'); // true
 AssertEmail::temporalMail('foo@yopmail.com'); // InvalidArgumentException: Temporal email is not allowed "test@yopmail.com"
 AssertEmail::temporalMail('foo@yopmail.com', 'Custom message %s'); // InvalidArgumentException: Custom message "foo@domain"
@@ -61,9 +62,9 @@ AssertEmail::temporalMail('foo@yopmail.com', 'Custom message %s'); // InvalidArg
 
 #### DNS
 Check DNS MX registry
-``dns($email, $message = '')``
-
 ```php
+dns($email, $message = '')
+
 AssertEmail::dns('foo@domain.com'); // true
 AssertEmail::dns('foo@domain.000'); // InvalidArgumentException: Incorrect domain name "domain.000"
 AssertEmail::dns('foo@domain.000', 'Custom message %s'); // InvalidArgumentException: Custom message "domain.000"
@@ -71,9 +72,9 @@ AssertEmail::dns('foo@domain.000', 'Custom message %s'); // InvalidArgumentExcep
 
 #### Domains Allowed
 Check if domain allowed list
-``domainsAllowed($email, array $domains, $message = '')``
-
 ```php
+domainsAllowed($email, array $domains, $message = '')
+
 $allowed = ['mysite.com', 'somedomain.xy', 'test.dev'];
 
 AssertEmail::domainsAllowed('foo@test.dev', $allowed); // true
