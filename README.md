@@ -4,7 +4,7 @@ Assert email
 
 PHP >= 5.4
 
-Library inspired in webmozart/assert for assert email
+PHP library to check email inspired in webmozart/assert
 
 ## Example usage
 
@@ -68,7 +68,6 @@ AssertEmail::dns('foo@domain.000', 'Custom message %s'); // InvalidArgumentExcep
 domainsAllowed($email, array $domains, $message = '')
 
 ```php
-
 $allowed = ['mysite.com', 'somedomain.xy', 'test.dev'];
 
 AssertEmail::domainsAllowed('foo@test.dev', $allowed); // true
