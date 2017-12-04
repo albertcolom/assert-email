@@ -4,13 +4,18 @@ Assert email
 
 PHP >= 5.4
 
-PHP library to check email inspired in webmozart/assert
+PHP library to check email inspired in [webmozart/assert](https://packagist.org/packages/webmozart/assert)
+
+## Installation
+
+```php
+composer require albertcolom/assert-email
+
+```
 
 ## Example usage
 
 ```php
-<?php
-
 use albertcolom\Assert\AssertEmail;
 
 class User
@@ -35,37 +40,38 @@ $user->setEmail('foo@domain'); // InvalidArgumentException: Invalid email "foo@d
 
 ## Assertions
 
-#### Valid: RFC 2822
-valid($email, $message = '')
+#### Valid
+Check email valid RFC 2822
+``valid($email, $message = '')``
 
 ```php
 AssertEmail::valid('foo@domain.com'); // true
 AssertEmail::valid('foo@domain'); // InvalidArgumentException: Invalid email "foo@domain"
 AssertEmail::valid('foo@domain', 'Custom message %s'); // InvalidArgumentException: Custom message "foo@domain"
-
 ```
 #### Temporal mail
-temporalMail($email, $message = '')
+Check temporary emails, it provides a built-in database of [2000+](https://github.com/albertcolom/assert-email/blob/master/resources/temporal-mail-domain.txt) domains
+``temporalMail($email, $message = '')``
 
 ```php
 AssertEmail::temporalMail('foo@domain.com'); // true
 AssertEmail::temporalMail('foo@yopmail.com'); // InvalidArgumentException: Temporal email is not allowed "test@yopmail.com"
 AssertEmail::temporalMail('foo@yopmail.com', 'Custom message %s'); // InvalidArgumentException: Custom message "foo@domain"
-
 ```
 
 #### DNS
-dns($email, $message = '')
+Check DNS MX registry
+``dns($email, $message = '')``
 
 ```php
 AssertEmail::dns('foo@domain.com'); // true
 AssertEmail::dns('foo@domain.000'); // InvalidArgumentException: Incorrect domain name "domain.000"
 AssertEmail::dns('foo@domain.000', 'Custom message %s'); // InvalidArgumentException: Custom message "domain.000"
-
 ```
 
 #### Domains Allowed
-domainsAllowed($email, array $domains, $message = '')
+Check if domain allowed list
+``domainsAllowed($email, array $domains, $message = '')``
 
 ```php
 $allowed = ['mysite.com', 'somedomain.xy', 'test.dev'];
@@ -73,5 +79,4 @@ $allowed = ['mysite.com', 'somedomain.xy', 'test.dev'];
 AssertEmail::domainsAllowed('foo@test.dev', $allowed); // true
 AssertEmail::domainsAllowed('foo@gmail.com', $allowed); // InvalidArgumentException: Domain is not allowed "foo@gmail.com"
 AssertEmail::domainsAllowed('foo@gmail.com', $allowed, 'Custom message %s'); // InvalidArgumentException: Custom message "foo@gmail.com"
-
 ```
