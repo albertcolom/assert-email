@@ -1,5 +1,8 @@
 {
     "name": "albertcolom/assert-email",
+    "description": "PHP library check email (RFC 2822, DNS, Temporal Mail, Allowed Domains)",
+    "license": "MIT",
+    "keywords": ["assert", "check", "validate", "email"],
     "authors": [
         {
             "name": "Albert Colom",
@@ -23,3 +26,5 @@
         }
     }
 }
+
+"keywords": ["assert", "check", "validate"],
